@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en" class="html-root h-full">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Primary Meta Tags -->
+    <title>Weather App - Real-Time Weather Information | Get Current Weather Conditions</title>
+    <meta name="title" content="Weather App - Real-Time Weather Information | Get Current Weather Conditions" />
+    <meta name="description"
+        content="Get real-time weather information for any city worldwide. View current temperature, humidity, wind speed, and weather conditions with an intuitive interface. Built by Stephen William G. De Jesus." />
+    <meta name="keywords"
+        content="weather app, weather forecast, current weather, temperature, humidity, wind speed, weather conditions, Stephen De Jesus, web app, real-time weather" />
+    <meta name="author" content="Stephen William G. De Jesus" />
+    <meta name="robots" content="index, follow" />
+    <meta name="language" content="English" />
+    <meta name="revisit-after" content="1 days" />
+    <meta name="distribution" content="global" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://yourdomain.com/weather-app/" />
+    <meta property="og:title" content="Weather App - Real-Time Weather Information" />
+    <meta property="og:description"
+        content="Get real-time weather information for any city worldwide. View current temperature, humidity, wind speed, and weather conditions." />
+    <meta property="og:image" content="https://yourdomain.com/weather-app-preview.jpg" />
+    <meta property="og:image:alt" content="Weather app interface showing current conditions" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:site_name" content="Weather App" />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://yourdomain.com/weather-app/" />
+    <meta name="twitter:title" content="Weather App - Real-Time Weather Information" />
+    <meta name="twitter:description"
+        content="Get real-time weather information for any city worldwide. View current temperature, humidity, wind speed, and weather conditions." />
+    <meta name="twitter:image" content="https://yourdomain.com/weather-app-preview.jpg" />
+    <meta name="twitter:image:alt" content="Weather app interface showing current conditions" />
+    <meta name="twitter:creator" content="@stephenwilliam" />
+    <meta name="twitter:site" content="@weatherapp" />
+
+    <!-- Additional SEO -->
+    <link rel="canonical" href="https://yourdomain.com/weather-app/" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Weather App",
+      "description": "Real-time weather application providing current weather conditions for cities worldwide",
+      "url": "https://yourdomain.com/weather-app/",
+      "applicationCategory": "WeatherApplication",
+      "operatingSystem": "Web",
+      "author": {
+        "@type": "Person",
+        "name": "Stephen William G. De Jesus",
+        "url": "https://www.facebook.com/stephenwilliam.dejesus.5/"
+      },
+      "dateCreated": "2024-01-01",
+      "dateModified": "2025-08-24",
+      "inLanguage": "en-US",
+      "isAccessibleForFree": true,
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://yourdomain.com/weather-app/?city={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="output.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        .body-container {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* Screen reader only content */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+
+    </style>
+</head>
+
+<body class="body-container flex flex-col justify-center items-center min-h-screen bg-gray-100 gap-3">
+
+    <main id="main-content" class="main-content flex flex-col justify-center items-center w-full p-6 gap-7" role="main">
+        <section id="weather-section" class="weather-section bg-white rounded-3xl shadow-xl w-full max-w-sm p-8" aria-labelledby="weather-section__heading">
+            <h1 id="weather-section__heading" class="sr-only">Current Weather Information</h1>
+            
+            <div id="weather-card" class="weather-card w-full flex flex-col justify-center items-center gap-4" role="region" aria-label="Weather information display">
+                <form id="weather-search-form" class="weather-search w-full ring ring-gray-300 flex justify-between items-center py-3 px-4 rounded-xl focus-within:ring-2 focus-within:ring-gray-900 transition" role="search" aria-label="Search weather by city">
+                    <label for="weather-search__input" class="sr-only">Enter city name to get weather information</label>
+                    <input 
+                        id="weather-search__input" 
+                        class="weather-search__input outline-none w-full" 
+                        type="text" 
+                        placeholder="Enter city name"
+                        autocomplete="address-level2"
+                        spellcheck="false"
+                        aria-describedby="weather-search__instructions"
+                    >
+                    <div id="weather-search__instructions" class="sr-only">
+                        Type a city name and press search button or Enter key to get current weather
+                    </div>
+                    <button 
+                        id="weather-search__button" 
+                        class="weather-search__button text-gray-400 hover:text-gray-900 active:text-gray-900 transition cursor-pointer" 
+                        type="submit"
+                        aria-label="Search weather for entered city"
+                    >
+                        <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+                    </button>
+                </form>
+                
+                <div id="weather-location" class="weather-locatio text-center mt-5">
+                    <h2 id="weather-location__name" class="weather-location__name text-gray-900 text-2xl font-semibold">Manila, PH</h2>
+                    <p id="weather-location__date" class="weather-location__date text-gray-600 text-sm">
+                        <time datetime="2025-06-13" id="weather-location__time">Friday, 13 Jun 2025</time>
+                    </p>
+                </div>
+                
+                <div id="weather-icon-container" class="weather-icon-container flex justify-center items-center">
+                    <img 
+                        id="weather-icon" 
+                        class="weather-icon w-[200px] h-[200px]" 
+                        src="https://openweathermap.org/img/wn/10d@4x.png"
+                        alt="Current weather condition icon"
+                        role="img"
+                        aria-describedby="weather-description__text"
+                    >
+                </div>
+                
+                <div id="weather-main-info" class="weather-main-info text-center mb-5">
+                    <p id="weather-temperature" class="weather-temperature text-gray-900 font-bold text-5xl" aria-label="Current temperature is 29.42 degrees Celsius">29.42°C</p>
+                    <p id="weather-description__text" class="weather-description text-lg text-gray-600">Overcast clouds</p>
+                </div>
+                
+                <div id="weather-details" class="weather-details w-full flex justify-around items-center text-center" role="group" aria-label="Additional weather information">
+                    <div id="weather-wind" class="weather-detail flex flex-col justify-center items-center gap-1" role="group" aria-labelledby="weather-wind__label">
+                        <div class="weather-detail__icon" aria-hidden="true">
+                            <i class="bi bi-wind text-gray-900 text-2xl"></i>
+                        </div>
+                        <p id="weather-wind__value" class="weather-detail__value text-gray-900 text-sm font-semibold" aria-label="Wind speed is 6.9 kilometers per hour">6.9km/h</p>
+                        <p id="weather-wind__label" class="weather-detail__label text-gray-600 text-xs">Wind</p>
+                    </div>
+                    <div id="weather-humidity" class="weather-detail flex flex-col justify-center items-center gap-1" role="group" aria-labelledby="weather-humidity__label">
+                        <div class="weather-detail__icon" aria-hidden="true">
+                            <i class="bi bi-moisture text-gray-900 text-2xl"></i>
+                        </div>
+                        <p id="weather-humidity__value" class="weather-detail__value text-gray-900 text-sm font-semibold" aria-label="Humidity is 71 percent">71%</p>
+                        <p id="weather-humidity__label" class="weather-detail__label text-gray-600 text-xs">Humidity</p>
+                    </div>
+                    <div id="weather-cloud" class="weather-detail flex flex-col justify-center items-center gap-1" role="group" aria-labelledby="weather-cloud__label">
+                        <div class="weather-detail__icon" aria-hidden="true">
+                            <i class="bi bi-cloud text-gray-900 text-2xl"></i>
+                        </div>
+                        <p id="weather-cloud__value" class="weather-detail__value text-gray-900 text-sm font-semibold" aria-label="Cloud coverage is 100 percent">100%</p>
+                        <p id="weather-cloud__label" class="weather-detail__label text-gray-600 text-xs">Cloud</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer
+        class="site-footer text-center flex justify-center items-center text-gray-500"
+        role="contentinfo">
+        <div class="footer-wrapper w-full max-w-2xl flex flex-col max-sm:flex-col justify-between items-center gap-1.5 py-4 px-6">
+            <p class="copyright-text text-xs">
+                &copy; <span id="current-year">2025</span> All rights reserved. Created by
+                <a href="https://www.facebook.com/stephenwilliam.dejesus.5/" target="_blank"
+                    class="author-link block font-semibold active:text-gray-900 hover:text-gray-900 underline transition focus-visible"
+                    rel="author noopener" aria-label="Visit Stephen William G. De Jesus on Facebook">
+                    Stephen William G. De Jesus
+                </a>
+            </p>
+
+            <nav class="social-navigation" role="navigation" aria-label="Social media links">
+                <ul class="social-links-list flex justify-center items-center gap-4 text-lg" role="list">
+                    <li class="social-link-item">
+                        <a href="https://github.com/bogiiiie" target="_blank" rel="noopener"
+                            class="social-link active:text-gray-900 hover:text-gray-900 transition focus-visible"
+                            aria-label="Visit Stephen's GitHub profile">
+                            <i class="bi bi-github" aria-hidden="true"></i>
+                        </a>
+                    </li>
+                    <li class="social-link-item">
+                        <a href="https://www.facebook.com/stephenwilliam.dejesus.5/" target="_blank" rel="noopener"
+                            class="social-link active:text-gray-900 hover:text-gray-900 transition focus-visible"
+                            aria-label="Visit Stephen's Facebook profile">
+                            <i class="bi bi-facebook" aria-hidden="true"></i>
+                        </a>
+                    </li>
+                    <li class="social-link-item">
+                        <a href="https://www.instagram.com/stephenwilliamdejesus/" target="_blank" rel="noopener"
+                            class="social-link active:text-gray-900 hover:text-gray-900 transition focus-visible"
+                            aria-label="Visit Stephen's Instagram profile">
+                            <i class="bi bi-instagram" aria-hidden="true"></i>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+
+</body>
+
+</html>
